@@ -2,7 +2,7 @@
 
 [Paprr](https://giordano-lucas.github.io/ADA-2020-Tesco-Extension/)
 ## First image
-{% include vizu.html %}
+{% include images/vizu.html %}
 
 
 ### Markdown
