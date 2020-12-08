@@ -1,11 +1,9 @@
 # Link
 
 [Paprr](https://giordano-lucas.github.io/ADA-2020-Tesco-Extension/)
-## Welcome to GitHub Pages
+## First image
+{% include vizu.html %}
 
-You can use the [editor on GitHub](https://github.com/giordano-lucas/ADA-2020-Tesco-Extension/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
-
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
 
 ### Markdown
 
