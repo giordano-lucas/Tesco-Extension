@@ -117,7 +117,7 @@ In this section, we want to have a piece of more formal evidence that some of ou
 ### Geographical Silhouette
 As a first step we will try to use the silhouette score again but in the geographical domain. To do so we will compute the silhouette score as we did at the beginning of the study but this time we will use the geographical distance as the distance between data points. In order to be able to compare the future results, we will also compute the silhouette score produced by a random clustering. We do so hoping that our clustering will perform significantly better than the random one. 
 
-{% images/validation-geographical-distance-silhouette.png %}
+{% include_relative images/validation-geographical-distance-silhouette.png %}
 
 We see that unfortunately, this does not go in the direction of a good evidence of fit. The scores are quite small compared to the ones we got in the naive analysis. They even goes to negative values, meaning that, on average, points tend to be closer to other clusters than to their centroid, or at least the geographical sense. 
 
