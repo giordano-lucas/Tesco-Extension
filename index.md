@@ -119,6 +119,7 @@ As a first step we will try to use the silhouette score again but in the geograp
 
 {% include_relative images/validation-geographical-distance-silhouette.png %}
 
+
 We see that unfortunately, this does not go in the direction of a good evidence of fit. The scores are quite small compared to the ones we got in the naive analysis. They even goes to negative values, meaning that, on average, points tend to be closer to other clusters than to their centroid, or at least the geographical sense. 
 
 However, we need to take a step back and try to fully undertand why such result have arisen. Indeed, we should remind ourselves that the silhouette score computation relies on the average distance to other points in the same cluster, to which we substract the smallest mean distance to other points in other clusters. This metric is thus likely to produce high scores for dense clusters distributed as a gaussian centered in the centroid. This is is not the shape that we observed in our visualization : we rather saw concentric circles, scattered around the map (they do not form unique blocks)! Indeed, if we were to run a K-means algorithm in the 2D geographical vector space, we would never get such concentric shaped clusters. 
