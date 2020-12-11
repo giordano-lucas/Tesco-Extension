@@ -59,17 +59,6 @@ We will start by studying the output clustering of a K-means algorithm to undert
 ## Naive Analysis
 In this naive Analysis will not take into account the geographical aspect of the dataset. Since we only want to get a feeling about how k-means performs with the ```tesco``` data, we will select a subset of the dataset for this analysis. To be as precise as possible we study the smallest aggregation level for the entire year period.
 
-# tt
-
-{% include_relative images/naive-silhouette.png %}
-
-Silhouette scores can be interpreted as follows :
- * 1  indicate that the sample is far away from the neighboring clusters
- * 0  indicates that the sample is on or very close to the decision boundary between two neighboring clusters
- * <0 indicate that those samples might have been assigned to the wrong cluster. 
-
-Only for ```k = 4```, we observe higher variability scores (inside clusters) what indicates that the clustering might not be so good. However, for all k, we do not have the presence of clusters with below-average (red dotted line) silhouette scores which is a good point.
-
 
 ### K-means 2D visualisation
 
