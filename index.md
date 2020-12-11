@@ -20,8 +20,8 @@ In the section, we will use ```geopandas``` to load the [Statistical GIS Boundar
 
 For each aggregation level ```LSOA```, ```MSOA```, ```WARD```, ```BOROUGH``` we read the correponding file and retreive the following subset of columns: 
 
-* ```area_id ```: the id of the area considered
-* ```name    ```: the name of the area considered
+* ```area_id```: the id of the area considered
+* ```name```: the name of the area considered
 * ```geometry```: the geometric shape of the area in the 2D london map (polygon or multipolygon if the area is definied in multiple pieces)
 
 We then store the resulting geopandas dataframe into a dictionary for later usage.
@@ -40,9 +40,9 @@ Moreover, it stores these features for each combinaison of
  ### Creation of the actual figure and components
 Here is are the actual components defined. We created a ```bkapp``` (bokeh application) function that given the ```doc``` (bokeh document), creates the components :
 
-1. ```plot          ```: map of colors for the selected areas
-2. ```btn_period    ```: button to select the period
-3. ```btn_agg_level ```: button to select the aggregaton level
+1. ```plot```: map of colors for the selected areas
+2. ```btn_period```: button to select the period
+3. ```btn_agg_level```: button to select the aggregaton level
 4. ```select_feature```: button to select the feature of typical product to display (or clustering)
 
 it then adds the respective event handers and links the components to the ```doc```
