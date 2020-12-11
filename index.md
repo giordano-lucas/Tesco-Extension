@@ -60,8 +60,5 @@ We will start by studying the output clustering of a K-means algorithm to undert
 ## Naive Analysis
 In this naive Analysis will not take into account the geographical aspect of the dataset. Since we only want to get a feeling about how k-means performs with the ```tesco``` data, we will select a subset of the dataset for this analysis. To be as precise as possible we study the smallest aggregation level for the entire year period.
 
-### Standard K-means analysis : silhouette and sse
-The followings cells aim at choosing which value of ```k``` leads to a good clustering assignment. The standard procedure for doing so is to look at the ```silhouette``` and ```sse``` plots.
 
-{% include_relative images/naive-metrics.png %}
 
