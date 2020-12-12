@@ -35,7 +35,7 @@ We can easily convince ourselves that we can indeed recognize some dependencies 
 We will start by studying the output of a standard clustering algorithm named [K-means](https://en.wikipedia.org/wiki/K-means_clustering) to understand which values of ```k```(the number of clusters) will produce the most natural clustering __*in the typical product space*__. The next step will to try to make some sense of out this clustering by performing a visualisation in 2D using several dimensionality reduction techniques. We might hope that we will already be able to see some geographical structure in those plots (maybe recognize the map of London somehow). If not we will have to apply other techniques to help assess the geographical validation of the clusters.
 
 ## Naive Analysis
-In this naive analysis, the geographical aspect of the dataset will not taken into account. Since we only want to get a feeling about how the clustering algorithm performs with the ```Tesco``` data, we select a subset of the dataset for this analysis. To be as precise as possible we study the smallest aggregation level (```lsoa```) for the entire year period. 
+In this naive analysis, the geographical aspect of the dataset will not be taken into account. Since we only want to get a feeling about how the clustering algorithm performs with the ```Tesco``` data, we select a subset of the dataset for this analysis. To be as precise as possible we study the smallest aggregation level (```lsoa```) for the entire year period. 
 
  As stated before, the starting point of this analysis is to understand which value of ```k``` leads to a good clustering assignment. The standard procedure for doing so is to look at the ```silhouette``` and ```sse``` plots.  
 
@@ -52,7 +52,7 @@ Silhouette scores can be interpreted as follows :
 
 Only for ```k = 4```, we observe higher variability scores (inside clusters) what indicates that the clustering might not be so good. However, for all ```k```, we do not have the presence of clusters with below average (red dotted lines) silhouette scores which is a good point.
 
-In the previous point, we tried to formally understand the goodness of fit for the clusters found. Here, we will take a more visual approach. To do so we naively project the data on a 2D space using PCA and T-SNE algorithms. We plot the results and label them with the labels produced by the clustering (choose ```k=3``` among the candidates we listed earlier), hoping that the obtained figure will look like the map of London. We obtained the following figure:
+In the previous point, we tried to formally understand the goodness of fit for the clusters found. Here, we will take a more visual approach. To do so we naively project the data on a 2D space using PCA and T-SNE algorithms. We plot the results and label them with the labels produced by the clustering (choose ```k = 3``` among the candidates we listed earlier), hoping that the obtained figure will look like the map of London. We obtained the following figure:
 
 ![Alt text](/images/naive-k-means-plot.png){:class="img-responsive"}
 
@@ -85,7 +85,7 @@ As a first step, we will try to use the silhouette score again but in the geogra
 
 ![Alt text](/images/validation-geographical-distance-silhouette.png){:class="img-responsive"}
 
-We see that unfortunately, this does not go in the direction of a good evidence of fit. The scores are quite small compared to the ones we got in the naive analysis. They even go to negative values, meaning that, on average, points tend to be closer to other clusters than to their centroid, or at least the geographical sense. 
+We see that unfortunately, this does not go in the direction of a good evidence of fit. The scores are quite small compared to the ones we got in the naive analysis. They even go to negative values, meaning that, on average, points tend to be closer to other clusters than to their centroid, or at least in the geographical sense. 
 
 However, we need to take a step back and try to fully understand why such result has arisen. Indeed, we should remind ourselves that the silhouette score computation relies on the average distance to other points in the same cluster, to which we subtract the smallest mean distance to other points in other clusters. This metric is thus likely to produce high scores for dense clusters distributed as a Gaussian centred in the centroid. This is not the shape that we observed in our visualisation : we rather saw concentric circles, scattered around the map (they do not form unique blocks)! Indeed, if we were to run a K-means algorithm in the 2D geographical vector space, we would never get such concentric shaped clusters. 
 
@@ -111,7 +111,10 @@ In this third attempt, a brand new metric is designed to evaluate if geographica
 
 > Here the score computed for area 1 is two, area 1 belongs to the red cluster and has two red neighbours. 
 
-Once we have computed this score for every area of the dataset, we group the result per cluster by averaging the previously computed scores. The obtained result is the following: for a given cluster (between 0 and k)  we know the expected number of neighbours belonging to the same given cluster. Since this metric depends on the average number of neighbours in the graph, we cannot simply say that the obtained number is high or low. To have a comparison basis we repeated the procedures described above but using random assignments for the labels. 
+Once we have computed this score for every area of the dataset, we group the result per cluster by averaging the previously computed scores. Basically, the output of this process is the mean number of neighbors whithin each cluster. For a given cluster is allows to make the following statement : 
+>  For each area ```A```, on average, we expect to see .... neighbouring areas that belong to the same cluster as   ```A```.
+ 
+ Since this metric depends on the average number of neighbours in the graph, we cannot simply say that the obtained number is high or low. To have a comparison basis, we repeated this procedure using random assignments for the labels. 
 
 This new metric is defined more locally. A cluster can be split into two parts located at opposite sides of London and still obtain a good score (what we want) while still being fairly general (we do not want to design a metric that will always return a good score for what we are trying to show).
 
@@ -123,7 +126,7 @@ At first sight, this already looks quite promising but let's dive into the detai
 
 1. For each ```k```, almost all clusters do better than random.
 2. When ```k``` increases, the clusters tend to resemble less and less to the random one, on average.
-3. When ```k``` increases, clusters with a score extremely low (close to 0) appear
+3. When ```k``` increases, clusters with a score extremely low (close to 0) appear.  
 
 Using this metric and the visualisation, we are finally able to somehow demonstrate that there is indeed some evidence that the clustering on typical product produces, at the same time geographically similar clusters. 
 
@@ -133,8 +136,7 @@ If this result at least shows that we can come up with some metric to evaluate s
 
 ## Cluster typical products 
 
-Now that we managed to assess the geographical validity of our clustering, let's try to use it!
-In this section, we will analyse our clustering through the differences in the average typical product between the clusters. We choose ```k = 4``` and the ```Ward``` aggregation level in order to be able to relate our analysis to the number of [diabetes](https://drive.google.com/drive/folders/19mY0rxtHkAXRuO3O4l__S2Ru2YgcJVIA) within each cluster later on (data is only available for the ```Ward```)
+Now that we managed to assess the geographical validity of our clustering, let's try to use it! In this section, we will analyse our clustering through the differences in the average typical product between the clusters. We choose ```k = 4``` and the ```Ward``` aggregation level in order to be able to relate our analysis to the number of [diabetes](https://drive.google.com/drive/folders/19mY0rxtHkAXRuO3O4l__S2Ru2YgcJVIA) within each cluster later on (data is only available for the ```Ward```)
 
 ![Alt text](/images/analysis-cluster-typical-product.png){:class="img-responsive"}
 
@@ -166,7 +168,7 @@ In this section, we will do a replication of the obesity regression model define
 As a first step, we could run a simple OLS model that only takes the clustering features as dependant variable. This will directly tell us if there is any hope for them to constitute good features. Let's choose arbitrarily ```k = 4``` for this simple test.
 
 | Variables             | Coef          | p-value  |
-| 
+| :---------------------|--------------:|---------:|
 | Intercept             | 0.2729        | 0.000    |
 | C(cluster_4)[T.1]     | 0.0973        |   0.000  |
 | C(cluster_4)[T.2]     |0.2820         |    0.000 |
@@ -177,7 +179,7 @@ This is confirmed : there is a significant difference between all clusters (p-va
 We are now ready to perform the actual regression task. Will first try to replicate the model summarised in table 2 of the Tesco paper in order to have a comparison basis
 
 | Variables             | Coef            | p-value  |
-| 
+| :---------------------|----------------:|---------:|
 | Intercept             |  0.9357         | 0.000    |
 | energy_carb           | 0.1887          |   0.004  |
 | entropy               |-1.0245          |    0.000 |
