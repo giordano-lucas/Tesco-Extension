@@ -4,5 +4,12 @@
 @import "{{ site.theme }}";
 
 .update-background {
-     background-image: url("imagesbackground.jpg");
+     background-image: url("imagesbackground.jpg") !important;
+}
+
+.project-authors {
+    font-size: small;
+    margin-bottom: 2rem;
+    font-weight: normal;
+    opacity: 0.7;
 }
