@@ -66,7 +66,7 @@ Moreover, the silhouette graph also suggests that these values are fair tradeoff
 
 To analyze deeper the values of the silhouettes scores obtained for our candidates we plot the silhouettes score obtained by each data points of each cluster.
 
-![Alt text](/images/naive-silhouette.png "")
+![Alt text](/images/naive-silhouette.png){:class="img-responsive"}
 
 Silhouette scores can be interpreted as follows :
  * 1  indicate that the sample is far away from the neighboring clusters
@@ -81,7 +81,7 @@ Only for ```k = 4```, we observe higher variability scores (inside clusters) wha
 
 In the previous point, we tried to formally understand the goodness of fit for the clusters found. Here, we will take a more visual approach. To do so we naively project the data on a 2D space using PCA and T-SNE algorithms. We plot the results and label them with the labels produced by the clustering (choose k=3 among the candidates we listed earlier), hoping that the obtained figure will look like the map of London. We obtained the following figure:
 
-![Alt text](/images/naive-k-means-plot.png "")
+![Alt text](/images/naive-k-means-plot.png){:class="img-responsive"}
 
 Here we understand that k = 2 might be a better choice if we think of TSNE. 
 
@@ -112,7 +112,7 @@ In this section, we want to have a piece of more formal evidence that some of ou
 ### Geographical Silhouette
 As a first step we will try to use the silhouette score again but in the geographical domain. To do so we will compute the silhouette score as we did at the beginning of the study but this time we will use the geographical distance as the distance between data points. In order to be able to compare the future results, we will also compute the silhouette score produced by a random clustering. We do so hoping that our clustering will perform significantly better than the random one. 
 
-![Alt text](/images/validation-geographical-distance-silhouette.png "")
+![Alt text](/images/validation-geographical-distance-silhouette.png){:class="img-responsive"}
 
 We see that unfortunately, this does not go in the direction of a good evidence of fit. The scores are quite small compared to the ones we got in the naive analysis. They even goes to negative values, meaning that, on average, points tend to be closer to other clusters than to their centroid, or at least the geographical sense. 
 
@@ -141,7 +141,7 @@ We now create a distance matrix such that it's $(i,j)$ entry contains the length
 #### Silhouette scores computation
 We again compute silhouette score as above for different values of k, and compare it to a random clustering.
 
-![Alt text](/images/validation-graph-silhouette.png "")
+![Alt text](/images/validation-graph-silhouette.png){:class="img-responsive"}
 
 The obtained results are very similar to the previous analysis. We might have put to much hope on the changes made by the distance metric. This might be due to the fact that the silhouette score is not well suited for our application. Thus we need to define a more appropriate metric to evaluate the graph. Note that despite the fact that the silhouette score is bad we are still convinced that the clustering is meaningful in the geographic space (because of the visualization).
 
@@ -194,7 +194,7 @@ We start by loading the data and put it in a nice form for comparison between cl
 
 We can now plot the differences in the nutrients between the clusters. We also compute the entropy of these to detect which nutrient class is more determining and important to separate the clusters. The smaller the entropy, the larger the importance of the corresponding nutrient.
 
-![Alt text](/images/analysis-cluster-typical-product.png "")
+![Alt text](/images/analysis-cluster-typical-product.png){:class="img-responsive"}
 
 We see from both the graphs and the entropies that ```carbohydrates```, ```sugar``` and ```energy_tot``` are the most determining nutrient classes to separate the clusters (we have more information about the cluster of a given area if we know about the amount of carbohydrates its typical product has than any other nutrient class). On the opposite side, the amout of proteins doesn't give much information.
 
@@ -217,7 +217,7 @@ Indeed, we could expect the cluster 2 to have a higher diabetes prevalence, foll
 
 Let's first plot the diabetes prevalence average for each cluster.
 
-![Alt text](/images/analysis-cluster-diabetes.png "")
+![Alt text](/images/analysis-cluster-diabetes.png){:class="img-responsive"}
 
 It looks pretty clear on the plot that our intuition was good : there is a clear difference between clusters. Even though the errors bars between cluster 0 and cluster 2 seem to overlap, both are significantly higher than the two other clusters.
 
@@ -276,7 +276,7 @@ We record the the following output metrics:
 1. ```Adj R2```: standard metric of a regression task
 2. ````mean significant clusters````: the number of clusters having a p-value smaller than ```5%```, meaning that we can reject the hypothesis that the fitted correspondant clusters actually have a 0 value (and therefore have some predictive power). We simply take the ```mean``` to be able to compare this between between various values of ```k```
 
-![Alt text](/images/analysis-cluster-regression.png "")
+![Alt text](/images/analysis-cluster-regression.png){:class="img-responsive"}
 
 The results look interesting, we observe an increase in ```Adj R2``` when ```k``` grows, reaching a peak at ```k = 8```. The maximum value ```Adj_R2* = 0.685``` constitutes a significant improvement compared to the value of the base model (```Adj_R2* = 0.613```). With the fact that ```71%``` of the clusters are statisfically signicant, we can conclude that the added clusters have indeed some non negligeable predictive power. This could be explained by the fact that, as seen previously, the clustering assignments in themselves encode some geographical value which could have been exploited by the OLS model.
 
