@@ -3,9 +3,6 @@
 
 @import "{{ site.theme }}";
 
-.page-header {
-    color: #fff;
-    text-align: center;
-    background-color: #000000;
-    background-image: url("images/background.jpg");
+.update-background {
+     background-image: url("imagesbackground.jpg");
 }
