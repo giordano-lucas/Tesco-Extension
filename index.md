@@ -31,24 +31,24 @@ We can easily convince ourselves that we can indeed recognize some dependencies 
 
 # Clustering Validation
 
-We will start by studying the output of a [standard clustering algorithm](https://en.wikipedia.org/wiki/K-means_clustering) to understand which values of ```k```(the number of clusters) will produce the most natural clustering __*in the typical product space*__. We will then try to make some sense of out this clustering by performing a visualisation in 2D using several dimensionality reduction techniques. We might hope that we will already be able to see some geographical structure in those plots (maybe recognize the map of London somehow). If not we will have to apply other techniques to help assess the geographical validation of the clusters.
+We will start by studying the output of a standard clustering algorithm named [K-means](https://en.wikipedia.org/wiki/K-means_clustering) to understand which values of ```k```(the number of clusters) will produce the most natural clustering __*in the typical product space*__. The next step will to try to make some sense of out this clustering by performing a visualisation in 2D using several dimensionality reduction techniques. We might hope that we will already be able to see some geographical structure in those plots (maybe recognize the map of London somehow). If not we will have to apply other techniques to help assess the geographical validation of the clusters.
 
 ## Naive Analysis
-In this naive analysis will not take into account the geographical aspect of the dataset. Since we only want to get a feeling about how the clustering algorithm performs with the ```Tesco``` data, we will select a subset of the dataset for this analysis. To be as precise as possible we study the smallest aggregation level for the entire year period.
+In this naive analysis, the geographical aspect of the dataset will not taken into account. Since we only want to get a feeling about how the clustering algorithm performs with the ```Tesco``` data, we select a subset of the dataset for this analysis. To be as precise as possible we study the smallest aggregation level (```lsoa```) for the entire year period. 
 
-The following cells aim at choosing which value of ```k``` leads to a good clustering assignment. The standard procedure for doing so is to look at the ```silhouette``` and ```sse``` plots.  
+ As stated before, the starting point of this analysis is to understand which value of ```k``` leads to a good clustering assignment. The standard procedure for doing so is to look at the ```silhouette``` and ```sse``` plots.  
 
 ![Alt text](images/naive-metrics.png){:class="img-responsive"}
 
-The elbow method applied on the SSE graph seems to indicate that 2 and 3  might be relevant choices of ```k``` for this dataset. Moreover, the silhouette graph also suggests that these values are fair tradeoffs between the goodness of the fit and the number of clusters. By curiosity, we will also keep ```k=4``` as one of the best candidates. To analyse deeper the values of the silhouettes scores obtained for our candidates we plot the silhouettes score obtained by each data point of each cluster.
+The elbow method applied on the SSE graph seems to indicate that 2 and 3  might be relevant choices of ```k``` for this dataset. Moreover, the silhouette graph also suggests that these values are fair tradeoffs between the goodness of the fit and the number of clusters. By curiosity, we will also keep ```k = 4``` as one of the best candidates. To analyse deeper the values of the silhouettes scores obtained for our candidates we plot the silhouettes score obtained by each data point of each cluster.
 
 ![Alt text](/images/naive-silhouette.png){:class="img-responsive"}
-
+```
 Silhouette scores can be interpreted as follows :
 * 1  indicate that the sample is far away from the neighbouring clusters
 * 0  indicates that the sample is on or very close to the decision boundary between two neighbouring clusters
 * <0 indicate that those samples might have been assigned to the wrong cluster. 
-
+```
 Only for ```k = 4```, we observe higher variability scores (inside clusters) what indicates that the clustering might not be so good. However, for all ```k```, we do not have the presence of clusters with below average (red dotted lines) silhouette scores which is a good point.
 
 In the previous point, we tried to formally understand the goodness of fit for the clusters found. Here, we will take a more visual approach. To do so we naively project the data on a 2D space using PCA and T-SNE algorithms. We plot the results and label them with the labels produced by the clustering (choose ```k=3``` among the candidates we listed earlier), hoping that the obtained figure will look like the map of London. We obtained the following figure:
