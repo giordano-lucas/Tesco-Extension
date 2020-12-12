@@ -43,12 +43,12 @@ In this naive analysis, the geographical aspect of the dataset will not taken in
 The elbow method applied on the SSE graph seems to indicate that 2 and 3  might be relevant choices of ```k``` for this dataset. Moreover, the silhouette graph also suggests that these values are fair tradeoffs between the goodness of the fit and the number of clusters. By curiosity, we will also keep ```k = 4``` as one of the best candidates. To analyse deeper the values of the silhouettes scores obtained for our candidates we plot the silhouettes score obtained by each data point of each cluster.
 
 ![Alt text](/images/naive-silhouette.png){:class="img-responsive"}
-```
+
 Silhouette scores can be interpreted as follows :
-- 1  indicate that the sample is far away from the neighbouring clusters
-- 0  indicates that the sample is on or very close to the decision boundary between two neighbouring clusters
-- <0 indicate that those samples might have been assigned to the wrong cluster. 
-```
+* 1  indicate that the sample is far away from the neighbouring clusters
+* 0  indicates that the sample is on or very close to the decision boundary between two neighbouring clusters
+* <0 indicate that those samples might have been assigned to the wrong cluster. 
+
 Only for ```k = 4```, we observe higher variability scores (inside clusters) what indicates that the clustering might not be so good. However, for all ```k```, we do not have the presence of clusters with below average (red dotted lines) silhouette scores which is a good point.
 
 In the previous point, we tried to formally understand the goodness of fit for the clusters found. Here, we will take a more visual approach. To do so we naively project the data on a 2D space using PCA and T-SNE algorithms. We plot the results and label them with the labels produced by the clustering (choose ```k=3``` among the candidates we listed earlier), hoping that the obtained figure will look like the map of London. We obtained the following figure:
@@ -201,6 +201,10 @@ We record the following output metrics:
 The results look interesting, we observe an increase in ```Adj R2``` when ```k``` grows, reaching a peak at ```k = 8```. The maximum value ```Adj_R2* = 0.685``` constitutes a significant improvement compared to the value of the base model (```Adj_R2* = 0.613```). With the fact that ```71%``` of the clusters are statistically significant, we can conclude that the added clusters have indeed some non-negligible predictive power. This could be explained by the fact that, as seen previously, the clustering assignments in themselves encode some geographical value which could have been exploited by the OLS model.
 
 The previous plot also tells us that a certain number of clusters (not to low value of ```k```) is required in order to observe a good increase in ```Adj R2```. Using the fact that the proportion of significant cluster is somehow high for values of ```k < 8 (optimum here)```, a possible explanation might be that the predictive power hidden in the clusters is there but the too small number of clusters does not allow the OLS algorithm to fully decode all the geographical information. Augmenting the granularity appears to solve this problem, until we reach a peak, after which the clusters start to lose predictive power (more noise and less predicable when ```k``` grows).
+
+![Alt text](images/analysis-cluster-regression-error.png){:class="img-responsive"}
+
+If we compare the error made by the best model (with ```k = 8```) and the base model, we observe similar behavior in the general trend. The only point where they differ is the number of really bad classified areas (points far away from the tendency line). Indeed, especially for areas having a number of diabetes higher than 0.7, it can be seen that the model including the clusters manages to capture more variablity than the base one (points closer to the tendency line). Fortunately, that's something that can be related to the cluster assignments! We observe that only the ```green``` and ```red``` clusters for large value of ```diabtes```, this means that the model was given a slight advantge when we include the clusters as features.
 
 #  Conclusion
 Through this project we created some tools, such as an interactive map, to visualise London's areas and their corresponding typical product as given in the Tesco dataset. To get deeper into this analysis, we decided to use some unsupervised machine leaning techniques such a K-means clustering. We saw that clustering can be used to visualise the high dimensional typical product in 2D. We then displayed the resulting clusters on the map, which helped us to highlight some link between typical product of the different areas and their geographical location. To formally verify this link, we tried different approaches and, after some inconclusive attempts, we finally managed to formally support our claims.
