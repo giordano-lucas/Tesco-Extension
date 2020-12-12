@@ -6,12 +6,14 @@
 .update-background {
      background-image: url("https://images.unsplash.com/photo-1504702076735-8cbf9e80f8c5?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80") !important;
 }
-
+.non-opaque {
+    opacity: 0.9;
+}
 .project-authors {
     font-size: small;
     margin-bottom: 2rem;
     font-weight: normal;
-    opacity: 0.7;
+    opacity: 0.9;
 }
 
 .justify {
