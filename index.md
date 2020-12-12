@@ -107,8 +107,7 @@ The obtained results are very similar to the previous analysis. We might have pu
 
 In this third attempt, a brand new metric is designed to evaluate if geographically close areas tend to belong to the same cluster of type. We proceed as following: for each area of the dataset we look at all its direct geographic neighbours and compute the number of neighbours belonging to the same cluster as the original area. We illustrated this in the following figure :
 
-![alt.png](/images/example-border-score.png =250x)
-
+![drawing](/images/example-border-score.png){ width=50% }
 > Here the score computed for area 1 is two, area 1 belongs to the red cluster and has two red neighbours. 
 
 Once we have computed this score for every area of the dataset, we group the result per cluster by averaging the previously computed scores. The obtained result is the following: for a given cluster (between 0 and k)  we know the expected number of neighbours belonging to the same given cluster. Since this metric depends on the average number of neighbours in the graph, we cannot simply say that the obtained number is high or low. To have a comparison basis we repeated the procedures described above but using random assignments for the labels. 
