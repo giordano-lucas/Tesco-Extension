@@ -99,8 +99,10 @@ As a first step, we create a new dataframe ```tesco_year``` that contains only t
 
 ### Interactive Clustering visualisation
 Now that all the needed clustering are computed and saved we can set up the visualization. We obtain the following result :
-
+For ```2``` clusters
 {% include_relative images/cluster-vizu.html %}
+For ```4``` clusters
+{% include_relative images/cluster-vizu-2.html %}
 
 Surprisingly, for many values of ```k```, we can actually make some geographical sense out of the clustering! Let's analyse further some of the plots:
 
