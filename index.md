@@ -199,8 +199,7 @@ We start by loading the data and put it in a nice form for comparison between cl
 
 We can now plot the differences in the nutrients between the clusters. We also compute the entropy of these to detect which nutrient class is more determining and important to separate the clusters. The smaller the entropy, the larger the importance of the corresponding nutrient.
 
-{% include_relative images/analysis-cluster-typical-product.png %}
-![Alt text](images/naive-k-means-plot.png "")
+![Alt text](images/analysis-cluster-typical-product.png "")
 
 We see from both the graphs and the entropies that ```carbohydrates```, ```sugar``` and ```energy_tot``` are the most determining nutrient classes to separate the clusters (we have more information about the cluster of a given area if we know about the amount of carbohydrates its typical product has than any other nutrient class). On the opposite side, the amout of proteins doesn't give much information.
 
