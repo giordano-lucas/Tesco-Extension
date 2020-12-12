@@ -174,6 +174,7 @@ Since for a given ```k```, on average we should have the same number on points i
 
 It would be nice to have a good plot to help us undersand the previous matrix. In the next cells, we are going to produce several ```barplots``` (one for each value of ```k```). We will then be able to compare the performance of our clustering compared to a random one.
 
+![Alt text](/images/validation-border-scores.png){:class="img-responsive"}
 
 At first sight, this already looks quite promising but let's dive into the details:
 
