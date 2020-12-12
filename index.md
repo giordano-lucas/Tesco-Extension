@@ -1,6 +1,11 @@
 # Introduction
 
-We try to give an answer to the following questions:
+Nowadays, the supply chain is one of the key concepts when managing businesses dealing with food distribution. It is the key ingredient that will determine the efficiency of a distributor. We would like to see if we can come up with some tools to optimize this distribution, using the Tesco grocery dataset.
+Tesco grocery 1.0 is a large scale dataset detailing food consumption in London areas at a different level of aggregation.  Such a dataset allows us to study the different trends around London when it comes to food consumption.  
+
+ In our study, we will focus on tools that could help to deploy new products on the London market the most efficiently possible. In particular, we would like to come up with a solution that, given a new product and its characteristics gives the area of London where to deploy it efficiently. When supplying shops with trucks one important thing is the used path to go to all shops. The longer this path is the more costly it gets to deliver the food. We won't work on how to design such a path but we will try to see if is possible to deploy a product in a given area such that the neighboring areas would also be inclined to use this product. More specifically, we will analyze if people from the same geographical area tend to eat the same way. We will do so by clustering the different areas of London by the characteristics ('sugar', 'protein'...) of their food consumption and compare this clustering the geographical positions of the areas.
+
+Throughout this anaylis, we try to give an answer to the following questions:
 
 1. Are similar areas in terms of typical products geographically close?
 2. Can we naturally cluster areas geographically when it comes to food consumption in London?
