@@ -26,6 +26,7 @@ We can proceed further by reading the [Tesco grocery dataset](https://figshare.c
 Locally, we built an interactive visualisation that allows the user to explore this data set at several levels of geographical granularity, periods of time (month of 2015). It is also possible to select which typical product features we want to visualise. A small snapshot of it can be found right below. Our knowledge of web development did not permit us to directly embed the full interaction aspect in this website but reader is welcomed to [download it](https://github.com/giordano-lucas/ADA-2020-Tesco-Extension/tree/gh-pages) and play with it offline.
 
 {% include_relative images/vizu.html %}
+{% include_relative images/vizu-2.html %}
 
 We can easily convince ourselves that we can indeed recognize some dependencies between typical product features and the geographical location of the areas. To capture the general trends (not by individual products) we will try to cluster the areas according to their typical product properties and see if we can quantify this geographical dependence formally.
 
