@@ -107,7 +107,7 @@ The obtained results are very similar to the previous analysis. We might have pu
 
 In this third attempt, a brand new metric is designed to evaluate if geographically close areas tend to belong to the same cluster of type. We proceed as following: for each area of the dataset we look at all its direct geographic neighbours and compute the number of neighbours belonging to the same cluster as the original area. We illustrated this in the following figure :
 
-![alt.png](example-border-score.png)
+![alt.png](/images/example-border-score.png)
 
 > Here the score computed for area 1 is two, area 1 belongs to the red cluster and has two red neighbours. 
 
