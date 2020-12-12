@@ -45,9 +45,9 @@ The elbow method applied on the SSE graph seems to indicate that 2 and 3  might 
 ![Alt text](/images/naive-silhouette.png){:class="img-responsive"}
 ```
 Silhouette scores can be interpreted as follows :
-* 1  indicate that the sample is far away from the neighbouring clusters
-* 0  indicates that the sample is on or very close to the decision boundary between two neighbouring clusters
-* <0 indicate that those samples might have been assigned to the wrong cluster. 
+- 1  indicate that the sample is far away from the neighbouring clusters
+- 0  indicates that the sample is on or very close to the decision boundary between two neighbouring clusters
+- <0 indicate that those samples might have been assigned to the wrong cluster. 
 ```
 Only for ```k = 4```, we observe higher variability scores (inside clusters) what indicates that the clustering might not be so good. However, for all ```k```, we do not have the presence of clusters with below average (red dotted lines) silhouette scores which is a good point.
 
