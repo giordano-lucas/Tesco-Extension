@@ -59,7 +59,7 @@ In this naive Analysis will not take into account the geographical aspect of the
 ### Standard K-means analysis : silhouette and sse
 The followings cells aim at choosing which value of ```k``` leads to a good clustering assignment. The standard procedure for doing so is to look at the ```silhouette``` and ```sse``` plots.  
 
-![Alt text](images/naive-metrics.png "")
+![Alt text](images/naive-metrics.png){:class="img-responsive"}
 
 The elbow method applied on the SSE graph seems to indicate that 2 and 3  might be relevant choices of ```k``` for this dataset.
 Moreover, the silhouette graph also suggests that these values are fair tradeoffs between the goodness of the fit and the number of clusters. By curiosity, we will also keep k=4 as one of the best candidates.
