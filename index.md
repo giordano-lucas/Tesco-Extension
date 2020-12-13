@@ -32,7 +32,7 @@ Due to our limited knowledge of web development, we could not manage to directly
 {% include_relative images/vizu.html %}
 {% include_relative images/vizu-2.html %}
 
-"""We can easily convince ourselves that we can indeed recognize some dependencies between typical product features and the geographical location of the areas.""" 
+From the plot, several dependencies between typical product features and geographical locations can be established. For instance, individuals living in the center of London seem to be less enclined to eat producs with high level of  ```sugar```. More generaly, the further we are from the center, the higher is the consumption of suger, espcially in the south east border. Additionaly, a similar center cluster can be observed when it comes to ```h_nutrients_calories```.
 
 To capture the general trends, areas will be clustered according to their typical product properties. Secondly, we will formalise this geographical dependence.
 
