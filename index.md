@@ -116,7 +116,7 @@ The output are very similar to the previous analysis. We might have put to much 
 
 In this third attempt, we forget about ```silhouette``` and a brand new metric is designed. For each area, we take a look at all its direct geographic neighbours and record how many how those belong to the same cluster as the original area. We illustrated this in the following figure :
 
-![alt.png](/images/example-border-score.png)
+![alt.png](/images/example-border-score-2.png)
 
 > Here the score computed for area 1 is two, area 1 belongs to the red cluster and has two red neighbours. 
 
