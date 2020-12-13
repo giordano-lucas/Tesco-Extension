@@ -1,7 +1,7 @@
 # Introduction
 
 Nowadays, the supply chain is one of the key concepts when managing businesses dealing with food distribution. It is the ingredient that will determine the efficiency of a distributor. We would like to see if we can come up with some tools to optimise this distribution, using the Tesco grocery dataset.
-Tesco grocery 1.0 is a large-scale dataset detailing food consumption in London areas at a different level of aggregation.  Such a dataset allows us to study the different trends around London when it comes to food consumption.  
+Tesco grocery 1.0 is a large-scale dataset detailing food consumption in London areas at different levels of aggregation.  Such a dataset allows us to study the different trends around London when it comes to food consumption.  
 
 In our study, we will focus on tools that could help a firm to deploy new products on the London market in the most efficient way possible. When supplying shops with trucks, one determining factor is the scheduled route used to go towards each shop. The longer the path is the costlier it gets to deliver the food. We won't work on how to design such a path. Instead, we will aim to determine if it is even possible to deploy a product in a given area such that the neighbouring areas would also be inclined to use the product. More specifically, we will analyse if individuals from the same location tend to have similar food preferences. This task will be done by clustering the different areas of London according to their food characteristics ('sugar', 'protein', etc.). Secondly, a comparison will be made between the clustering and the geographical positions of the areas.
 
@@ -23,7 +23,7 @@ We can proceed further by reading the [Tesco grocery dataset](https://figshare.c
 
 For the sake of this analysis, we will only consider the following  __*typical product*__  features:
 
-> ```fat, saturate, sugar, protein, carbohydrate, fibre, energy, calories, etc.```
+> ```fat, saturate, sugar, protein, carbohydrate, fibre, energy, calories, entropy```
 
 Locally, interactive visualisation is built. It allows the user to explore the data at several levels of geographical granularity, periods of time (month of 2015). It is also possible to select which typical product features are visualised. A snapshot can be found right below. 
 
@@ -105,13 +105,13 @@ This time, a slightly different approach will be taken. We again use the silhoue
 
 > the distance between two areas is defined as the shortest path (smallest number of areas to cross) to go from one area to the other. 
 
-The idea is that centroids of similar areas might be far from each other even if the areas are located next to each other. By giving a slightly more geographical meaning to the distance measure, we hope to be able to obtain a better cluster evaluation. Expect from this element, the procedure remains the same: we calculate the scores for various values of ```k``` and compared them to a random clustering assignment.
+The idea is that centroids of similar areas might be far from each other even if the areas are located next to each other. By giving a slightly more geographical meaning to the distance measure, we hope to be able to obtain a better cluster evaluation. Except from this element, the procedure remains the same: we calculate the scores for various values of ```k``` and compared them to a random clustering assignment.
 
 Note that, again, the analysis is only performed on the lsoa aggregation level. 
 
 ![Alt text](/images/validation-graph-silhouette.png){:class="img-responsive"}
 
-The output is very similar to the previous analysis. We might have put too much hope on the changes made by the distance metric. The shortest path is simply too close to the flight distance, especially for the smallest aggregation level. The lack of evidence could be due to the fact that the silhouette score is not well suited for this application. Therefore, a more appropriate score function needs to be defined. Note that despite the fact that the silhouette score is low, we are still convinced that the clustering is meaningful in the geographic space. Otherwise, the visualation would have given different results.
+The output is very similar to the previous analysis. We might have put too much hope on the changes made by the distance metric. The shortest path is simply too close to the flight distance, especially for the smallest aggregation level. The lack of evidence could be due to the fact that the silhouette score is not well suited for this application. Therefore, a more appropriate score function needs to be defined. Note that despite the fact that the silhouette score is low, we are still convinced that the clustering is meaningful in the geographic space. Otherwise, the visualisation would have given different results.
 
 ### Border Scores
 
@@ -121,7 +121,7 @@ In this third attempt, we forget about ```silhouette``` and a brand new metric i
 
 > Here, the score computed for all ```green``` areas is two: two neighboring areas that belong to the same cluster. 
 
-Once we have computed this score for every area of the dataset, we group the result per cluster by averaging the previously computed scores. Basically, the output of this process is the mean number of neighbors within each cluster. For a given cluster, is allows to make the following statement : 
+Once we have computed this score for every area of the dataset, we group the result per cluster by averaging the previously computed scores. Basically, the output of this process is the mean number of neighbors within each cluster. For a given cluster, it allows to make the following statement : 
 >  For each area ```A```, on average, we expect to see .... neighbouring areas that belong to the same cluster as ```A```.
 
 This new score function is defined more locally. A cluster can be split into two parts located at opposite sides of London and still obtain a good score (what we want) while still being fairly general (we do not want to design a metric that will always return a good score for what we are trying to show). To have a comparison basis, a parallel randomized procedure is also run, as done many times previously.
@@ -179,7 +179,9 @@ Our intuition was good: there is a clear difference between clusters. Even thoug
 
 For the last section, a replication of the obesity regression model defined in ```Tesco``` paper will be done. Then, we will try to improve it by including a new categorical feature: the clustering. Given the previous results found earlier, we hope to be able to increase the amount of variability explained by the model (```R2```). Obviously, we will have to quantify the improvement and choose a ```k``` high enough to have a meaningful impact on the model. 
 
-First, we run a simple OLS model that only takes the clustering features as dependant variables. It will directly tell us if there is any hope for them to constitute good features. Let's choose arbitrarily ```k = 4``` for this simple test.
+First, we run a simple OLS model that only takes the clustering features as depende
+
+nt variables. It will directly tell us if there is any hope for them to constitute good features. Let's choose arbitrarily ```k = 4``` for this simple test.
 
 | Variables             | Coef          | p-value  |
 | :---------------------|--------------:|---------:|
@@ -206,12 +208,12 @@ If we compare our result to table 2 in the paper, we find that our model is almo
 
 To evaluate the predictive power of the clustering assignments, the following experiment is run:
 
-> For each value of ```k```, an OLS is fitted using the same independent variables as in the paper. On top of them, the categorical variable ```cluster_k``` will be included.
+> For each value of ```k```, an OLS is fitted using the same dependent variables as in the paper. On top of them, the categorical variable ```cluster_k``` will be included.
 
 We record the following output metrics:
 
 1. ```Adj R2```: standard metric of a regression task
-2. ````mean significant clusters````: the number of clusters having a p-value smaller than ```5%```, meaning that we can reject the hypothesis that the fitted correspondent clusters actually have a 0 value (and therefore have some predictive power). We simply take the ```mean``` to be able to compare this between various values of ```k```
+2. ````mean significant clusters````: the number of clusters having a p-value smaller than ```5%```, meaning that we can reject the hypothesis that the fitted corresponding clusters actually have a 0 value (and therefore have some predictive power). We simply take the ```mean``` to be able to compare this between various values of ```k```
 
 ![Alt text](/images/analysis-cluster-regression.png){:class="img-responsive"}
 
