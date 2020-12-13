@@ -233,6 +233,6 @@ It is believed that the our analysis answers all of the initial questions, by th
 * Supply chain management improvements: optimise truck journey
 * Insurances: adapt prices according to the level of risk induced by food on health based on geographical areas
 * Marketing / Advertisement
-* Trash: create new installations/facilities to better fit the demand at geographical levels. For example one applicatoin cours be to add more plastic trashes in clusters with high consumption of sugar.
+* Trash: create new installations/facilities to better fit the demand at geographical levels. For example, one application could be to add more plastic trashes in clusters with high consumption of sugar.
 
 There are many fields of application of such a study. In the end, we can easily imagine how we could extend our work further. All of our study raises more food-related questions: can we establish a relationship between wealthy areas in terms of the clustering found, etc.
