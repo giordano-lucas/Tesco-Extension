@@ -174,7 +174,7 @@ Indeed, cluster 2 is likely to have a higher diabetes prevalence, followed by cl
 
 Our intuition was good: there is a clear difference between clusters. Even though the errors bars between cluster 0 and cluster 2 seem to overlap, both are significantly higher than the two other clusters. 
 
-# Practical usage of clustering : a feature for Machine Learning models
+# Practical usage: a feature for Machine Learning models
 
 For the last section, a replication of the obesity regression model defined in ```Tesco``` paper will be done. Then, we will try to improve it by including a new categorical feature: the clustering. Given the previous results found earlier, we hope to be able to increase the amount of variability explained by the model (```R2```). Obviously, we will have to quantify the improvement and choose a ```k``` high enough to have a meaningful impact on the model. 
 
