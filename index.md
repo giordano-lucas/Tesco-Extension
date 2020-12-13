@@ -228,11 +228,11 @@ Through this data story, we created some tools, such as an interactive map, to v
 
 We then analysed our clustering a bit deeper. We assessed the difference between the clusters in terms of the average typical product of each cluster. We showed some huge difference and explained how this could be used in finding the optimal target region in the context of an advertising campaign for example (which answered one of our first questions). The clustering data was also cross-referenced with London's data about diabetes prevalence in order to assess some underlying link. It was successful and some significant differences in terms of diabetes prevalence were stressed out between the clusters.
 
-We believe that the this analysis answers all of the initial questions, by the (interactive) visualisations and the formal analysis. There are other areas in which such an analysis can be useful, such as
+It is believed that the our analysis answers all of the initial questions, by the (interactive) visualisations or the formal validation/analysis. Of cours, there are many more fields in which such results can be applied, such as
 * Adapt product offer/prices for grocery shops
-* Supply chain management improvements : optimise truck journey
-* Insurance : adapt prices according to the level of risk induced by food on health according to geographical areas
+* Supply chain management improvements: optimise truck journey
+* Insurances: adapt prices according to the level of risk induced by food on health based on geographical areas
 * Marketing / Advertisement
-* Trash : create new installations/facilities to better fit the demand at geographical levels: add more plastic trash in clusters with high consumption of sugar for instance
+* Trash: create new installations/facilities to better fit the demand at geographical levels. For example one applicatoin cours be to add more plastic trashes in clusters with high consumption of sugar.
 
-There are many fields of application of such a study. In the end, we can easily imagine how we could extend our work further. All of our study raises more question related to food: can we relate wealthier areas in terms of the clustering found, etc.
+There are many fields of application of such a study. In the end, we can easily imagine how we could extend our work further. All of our study raises more food-related questions: can we establish a relationship between wealthy areas in terms of the clustering found, etc.
