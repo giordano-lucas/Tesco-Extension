@@ -118,7 +118,7 @@ In this third attempt, we forget about ```silhouette``` and a brand new metric i
 
 ![alt.png](/images/example-border-score-2.png)
 
-> Here the score computed for area 1 is two, area 1 belongs to the red cluster and has two red neighbours. 
+> Here the score computed for all ```green``` areas is two: two neighboring areas that belongs to the same cluster. 
 
 Once we have computed this score for every area of the dataset, we group the result per cluster by averaging the previously computed scores. Basically, the output of this process is the mean number of neighbors whithin each cluster. For a given cluster is allows to make the following statement : 
 >  For each area ```A```, on average, we expect to see .... neighbouring areas that belong to the same cluster as ```A```.
