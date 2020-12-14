@@ -1,9 +1,6 @@
 Products clusters and interactive  visualization
 ======
 
-## Online Data Story link
-[Data Story](https://giordano-lucas.github.io/ADA-2020-Tesco-Extension/)
-
 ## Abstract
 While the paper establishes the validity of the Tesco 1.0 dataset we propose to use this dataset to study if we can find some similarity in the typical products consumed within geographically close areas. To do so we will study the clusters of areas computed out of their products consumption: areas with similar typical product consumption will be clustered together. And then we will compare these clusters with the geographic disposition of the areas. Such a clustering could help grocery shop companies to adapt their product according to the areas where they operate. Moreover, to provide a better understanding of the data we will create an interactive visualization. The latter will represent typical food consumption of London areas on a map of the city with different levels of aggregation, over different periods of time and with the possibility of choosing different attributes of the typical product. This visualisation will help assess the validity of our findings. Finally, we will spend some time analysing the actual output of the clustering in terms of the typical product of the clusters. Using the dataset of diabetes prevalence, we will try to quantify how much information is contained in the clusters and how usefull can it be (study the impact of the cluster assignment as features of a linear regression compared to the base regressor of the Tesco paper).
 
@@ -90,8 +87,6 @@ While the paper establishes the validity of the Tesco 1.0 dataset we propose to 
 
 
 ## Notes to the reader
-
-
 ### Organisation of the repository
 In order to be able to run our notebook, you should have a folder structure similar to:
 
@@ -109,13 +104,14 @@ In order to be able to run our notebook, you should have a folder structure simi
     ├── images                              # Contains the ouput images and html used for the data story
     ├── extension.ipynb                     # Deliverable notebook for our extension
     ├── vizu.ipynb                          # Notebook containing only the vizualisations (if the reader only was to see the interactive viz)
+    ├── Data Extraction.ipynb               # Notebook that generates the subset of tesco used in this analysis
     └── README.md               
     
 Regarding the data folder a zip file can be downloaded [here](https://drive.google.com/drive/folders/1DH7EXo6Pbm2guJkWW75-wbYPa_5KTGQd?usp=sharing). It only remains to place it under the root directory of the repository and unzip it to be able to run the following notebooks. 
 
 > ```extension.ipynb``` is therefore the "single" notebook that we are supposed to deliver for the P4 submission.
 
-Note: ```vizu.ipynb``` is only there for the people who read our data story but still want to play with the interactive vizualisation without having to go through the entire deliverable notebook.
+Note: ```vizu.ipynb``` is only there for the people who read our data story but still want to play with the interactive vizualisation without having to go through the entire deliverable notebook. Furthermore, in the previously mentioned drive folder, the zip should contain a file named ```tesco.csv```. The latter contains all the revelant information from the original ```Tesco``` dataset for this analysis. It is nicely indexable and makes easier for us to query information. Alternatively, you could simply run the notebook ```Data Extraction.ipynb``` to generate it.
 
 ### Dependencies requirement
 
@@ -124,4 +120,3 @@ Furthermore, you should have the following additional libraries installed
 |:--------------------------------| 
 | Geopandas                       |
 | Bokeh                           |
-
