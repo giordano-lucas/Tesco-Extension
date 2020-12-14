@@ -65,7 +65,7 @@ In the previous paragraph, we tried to formally understand the goodness of fit f
 
 ![Alt text](/images/naive-k-means-plot.png){:class="img-responsive"}
 
-Now be can back to our initial question about the potential existence of a relationship between similar typical products and similar areas. At the beginning of the story, we thought that we might be able to recognize London from those simple 2D plots but it is clearly not the case. Nevertheless, it does not mean that the latter does not exist. We simply have to think more carefully about how we are going to address the question. Thus, we need to proceed with a deeper analysis of the clustering in the geographic space.
+Now we can back to our initial question about the potential existence of a relationship between similar typical products and similar areas. At the beginning of the story, we thought that we might be able to recognize London from those simple 2D plots but it is clearly not the case. Nevertheless, it does not mean that the latter does not exist. We simply have to think more carefully about how we are going to address the question. Thus, we need to proceed with a deeper analysis of the clustering in the geographic space.
 
 ## Geographical Clustering visualisation 
 
@@ -115,7 +115,7 @@ The output is very similar to the previous analysis. We might have put too much 
 
 ### Border Scores
 
-In this third attempt, we forget about ```silhouette``` and a brand new metric is designed. For each area, we take a look at all its direct geographic neighbours and record how many how those belong to the same cluster as the original area. We illustrated this in the following figure :
+In this third attempt, we forget about ```silhouette``` and a brand new metric is designed. For each area, we take a look at all its direct geographic neighbours and record how many how those belong to the same cluster as the original area. We illustrated this in the following figure:
 
 ![alt.png](/images/example-border-score-2.png)
 
@@ -152,7 +152,7 @@ Now that we managed to assess the geographical validity of our clustering, let's
 
 ![Alt text](/images/analysis-cluster-typical-product.png){:class="img-responsive"}
 
-We see from both the graphs that ```carbohydrates```, ```sugar``` and ```energy_tot``` are the most dissimilar nutrient classes. Indeed, we have more information about the cluster if we know about the amount of carbohydrates than any other nutrient class. Conversely, the number of proteins doesn't give much information.
+We see from the graphs that ```carbohydrates```, ```sugar``` and ```energy_tot``` are the most dissimilar nutrient classes. Indeed, we have more information about the cluster if we know about the amount of carbohydrates than any other nutrient class. Conversely, the number of proteins doesn't give much information.
 
 Such facts can be used to answer one of our first questions: 
 > "In the context of an advertising campaign, which areas of the city should be associated with which kinds of products?"
@@ -179,9 +179,7 @@ Our intuition was good: there is a clear difference between clusters. Even thoug
 
 For the last section, a replication of the obesity regression model defined in ```Tesco``` paper will be done. Then, we will try to improve it by including a new categorical feature: the clustering. Given the previous results found earlier, we hope to be able to increase the amount of variability explained by the model (```R2```). Obviously, we will have to quantify the improvement and choose a ```k``` high enough to have a meaningful impact on the model. 
 
-First, we run a simple OLS model that only takes the clustering features as depende
-
-nt variables. It will directly tell us if there is any hope for them to constitute good features. Let's choose arbitrarily ```k = 4``` for this simple test.
+First, we run a simple OLS model that only takes the clustering features as dependent variables. It will directly tell us if there is any hope for them to constitute good features. Let's choose arbitrarily ```k = 4``` for this simple test.
 
 | Variables             | Coef          | p-value  |
 | :---------------------|--------------:|---------:|
@@ -212,8 +210,8 @@ To evaluate the predictive power of the clustering assignments, the following ex
 
 We record the following output metrics:
 
-1. ```Adj R2```: standard metric of a regression task
-2. ````mean significant clusters````: the number of clusters having a p-value smaller than ```5%```, meaning that we can reject the hypothesis that the fitted corresponding clusters actually have a 0 value (and therefore have some predictive power). We simply take the ```mean``` to be able to compare this between various values of ```k```
+1. ```Adj R2```: standard metric of a regression task.
+2. ````mean significant clusters````: the number of clusters having a p-value smaller than ```5%```, meaning that we can reject the hypothesis that the fitted corresponding clusters actually have a 0 value (and therefore have some predictive power). We simply take the ```mean``` to be able to compare this between various values of ```k```.
 
 ![Alt text](/images/analysis-cluster-regression.png){:class="img-responsive"}
 
