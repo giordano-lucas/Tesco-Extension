@@ -50,7 +50,7 @@ In the naive analysis, the geographical aspect of the dataset will not be taken 
 
 The elbow method applied on the SSE graph seems to indicate that 2 and 3 might be relevant choices of ```k```. Moreover, the silhouette graph also suggests that these values are fair tradeoffs between the goodness of the fit and the number of clusters. By curiosity, we will also keep ```k = 4``` as one of the best candidates.
 
-""" To deeper analyse the values of the silhouettes scores obtained for the candidates,  silhouettes score are   by each data point of each cluster."""
+Individual area silhoutte scores are also worth looking at. They can found in the next plot, sorted and grouped by clusters for convinence.
 
 ![Alt text](/images/naive-silhouette.png){:class="img-responsive"}
 
