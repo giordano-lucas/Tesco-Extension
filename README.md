@@ -1,16 +1,19 @@
 Products clusters and interactive  visualization
 ======
+
+## Online Data Story link
 [Data Story](https://giordano-lucas.github.io/ADA-2020-Tesco-Extension/)
+
 ## Abstract
-While the paper establishes the validity of the Tesco 1.0 dataset we propose to use this dataset to study if we can find some similarity in the typical products consumed within geographically close areas. To do so we will study the clusters of areas computed out of their products consumption : areas with similar typical products consumption will be clustered together. And then we will compare these clusters with the geographic disposition of the areas. Such a clustering could help grocery shop compagnies to adapt their product according to the areas where they operate. Moreover, to provide a better understanding of the data we will create an interactive visualization. The latter will represent typical food consumption of London areas on a map of the city with different levels of aggregation, over different periods of time and with the possibility of choosing different attributes of the typical product. This visualisation will help assess the validity of our findings. Finally, we will spend some time analysing the actual output of the clustering in terms of the typical product of the clusters. Using the dataset of diabetes prevalence, we will try to quantify how much information is contained in the clusters and how usefull can it be (study the impact of the cluster assginment as features of a linear regression compared to the base regressor of the tesco paper).
+While the paper establishes the validity of the Tesco 1.0 dataset we propose to use this dataset to study if we can find some similarity in the typical products consumed within geographically close areas. To do so we will study the clusters of areas computed out of their products consumption: areas with similar typical product consumption will be clustered together. And then we will compare these clusters with the geographic disposition of the areas. Such a clustering could help grocery shop companies to adapt their product according to the areas where they operate. Moreover, to provide a better understanding of the data we will create an interactive visualization. The latter will represent typical food consumption of London areas on a map of the city with different levels of aggregation, over different periods of time and with the possibility of choosing different attributes of the typical product. This visualisation will help assess the validity of our findings. Finally, we will spend some time analysing the actual output of the clustering in terms of the typical product of the clusters. Using the dataset of diabetes prevalence, we will try to quantify how much information is contained in the clusters and how usefull can it be (study the impact of the cluster assignment as features of a linear regression compared to the base regressor of the Tesco paper).
 
 ## Research questions
 
-1. Are similar areas in terms of typical products geographically close?
+1. Are similar areas (in terms of typical products) geographically close?
 2. Can we naturally cluster areas geographically when it comes to food consumption in London?
-3. How do those clusters differ when we vary the aggregation level?
-4. Are we able to validate the clustering results in a similar way as in the Tesco paper? Do the clustering contains valid and usable information?
-5. In the context of an advertising campaign, which areas of the city should be associated with which kind of products? 
+3. How do those clusters differ when we let the aggregation level vary?
+4. Is it possible to use techniques similar to those presented in the Tesco paper to validate the clustering results? Does the clustering contain valid and usable information?
+5. In the context of an advertising campaign, which locations should be associated with which kinds of products?
 
 ## Proposed datasets
 
@@ -20,16 +23,16 @@ While the paper establishes the validity of the Tesco 1.0 dataset we propose to 
 
 ## Methods :
 
-1. For the visualization task, we will use the library ```geopandas``` and ```bokeh```. In this visualization we will include a button and check boxes for the time (month) variable of the represented data,  the aggregation (ward,lsoa,msoa) level and the feature of the typical product that will allow the user to vizualize only a subset of the dataset. 
+1. For the visualization task, we will use the library ```geopandas``` and ```bokeh```. In this visualization, we will include a button and checkboxes for the time (month) variable of the represented data,  the aggregation (ward,lsoa,msoa) level, and the feature of the typical product that will allow the user to visualize only a subset of the dataset. 
 2. For the clustering part, we will cluster the areas according to the product consumption of their products using the two following methods:
   2.1. Apply the k means algorithm on the data (need also to find suitable k)
-  2.2. Try to geographicaly validate the clustering using the following methods:
-    * Use techniques seen in class to select the righ value of ```k``` and  use dimentionality reduction to visulazie the clusters in 2D
-    * Find revelant geographical related metrics to evluate the good-ness of fit. They will help us find formal evidence that there is (or not) a relation between geography and the clustering. For instance, we could use diffenre distance metrics when the silhouette score is computed. We also plan to use a graph based approach to compute such metrics (vertices are areas and edges link  two areas if they share a phyiscal border). 
-3. Regarding the analyis of the clustering output, the following methods will be applied:
-  3.1. For each cluster compute its typical product (average of the typical product of the areas contained in the cluster) and study the differences observed. We will then relate those differences in terms of the metabolic syndrome related to diabetes prevalence (found in the tesco paper).
-  3.2. Quantify the predicte power of the clustering assignments to assess the information contained in the clustering. In order to do so, we will replicate the regression model (table 2. of the paper) on the number of diabetes prevalence in London and analyse the improvements (```R2``` for instance) when the clusters are added as dependent variable to the model compared to the base model of the paper. 
-4. Conclude by proposing other possible practical usage of the clustering output.
+  2.2. Try to geographically validate the clustering using the following methods:
+    * Use techniques seen in class to select the right value of ```k``` and  use dimensionality reduction to visualize the clusters in 2D
+    * Find relevant geographical related metrics to evaluate the good-ness of fit. They will help us find formal evidence that there is (or not) a relation between geography and the clustering. For instance, we could use different distance metrics when the silhouette score is computed. We also plan to use a graph-based approach to compute such metrics (vertices are areas and edges link two areas if they share a physical border). 
+3. Regarding the analysis of the clustering output, the following methods will be applied:
+  3.1. For each cluster compute its typical product (average of the typical product of the areas contained in the cluster) and study the differences observed. We will then relate those differences in terms of the metabolic syndrome-related to diabetes prevalence (found in the Tesco paper).
+  3.2. Quantify the predictive power of the clustering assignments to assess the information contained in the clustering. In order to do so, we will replicate the regression model (table 2. of the paper) on the number of diabetes prevalence in London and analyse the improvements (```R2``` for instance) when the clusters are added as dependent variable to the model compared to the base model of the paper. 
+4. Conclude by proposing other possible practical usages of the clustering output.
 
 ## Timeline and contributions :
 
@@ -41,7 +44,7 @@ While the paper establishes the validity of the Tesco 1.0 dataset we propose to 
 | Architecture and state (data handling)                                  | Lucas Giordano & Augustin       | 2h          |
 | Vizual components (buttons,...)                                         | Lucas Gruaz                     | 2h          |
 | Handling user interactions                                              | Augustin &  Lucas Gruaz         | 2h          |
-| Putting everthing together and code cleaning                            | Lucas Giordano                  | 2h          |
+| Putting everything together and code cleaning                            | Lucas Giordano                  | 2h          |
 | Trying to convert python code into  JS for data story (without sucess)  | Lucas Giordano                  | 6h          |
 
 
@@ -87,6 +90,8 @@ While the paper establishes the validity of the Tesco 1.0 dataset we propose to 
 
 
 ## Notes to the reader
+
+
 ### Organisation of the repository
 In order to be able to run our notebook, you should have a folder structure similar to:
 
@@ -106,6 +111,7 @@ In order to be able to run our notebook, you should have a folder structure simi
     ├── vizu.ipynb                          # Notebook containing only the vizualisations (if the reader only was to see the interactive viz)
     └── README.md               
     
+Regarding the data folder a zip file can be downloaded [here](https://drive.google.com/drive/folders/1DH7EXo6Pbm2guJkWW75-wbYPa_5KTGQd?usp=sharing). It only remains to place it under the root directory of the repository and unzip it to be able to run the following notebooks. 
 
 > ```extension.ipynb``` is therefore the "single" notebook that we are supposed to deliver for the P4 submission.
 
@@ -117,5 +123,5 @@ Furthermore, you should have the following additional libraries installed
 | Library                         |
 |:--------------------------------| 
 | Geopandas                       |
-| Bokeh                           | 
-| Augustin Kapps                  |
+| Bokeh                           |
+
