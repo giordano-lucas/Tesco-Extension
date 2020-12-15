@@ -223,7 +223,7 @@ Another way to understand to which degree the goodness of fit increases when we 
 
 ![Alt text](images/analysis-cluster-regression-error.png){:class="img-responsive"}
 
-If we compare the error made by the best model (with ```k = 8```) and the base model, we observe similar behavior in the general trend. The only point where they differ is the number of really bad classified areas (points far away from the tendency line). Indeed, especially for areas having a number of diabetes higher than 0.7, it can be seen that the model including the clusters manages to capture more variability than the base one (points closer to the tendency line). Fortunately, that's something that can be related to the cluster assignments! We observe that only the ```green``` and ```red``` clusters for a large value of ```diabetes```, this means that the model was given a slight advantage when we include the clusters as features.
+If we compare the error made by the best model (with ```k = 8```) and the base model, we observe similar behavior in the general trend. The only point where they differ is the number of really bad classified areas (points far away from the tendency line). Indeed, especially for areas having a number of diabetes higher than 0.7, it can be seen that the model including the clusters manages to capture more variability than the base one (points closer to the tendency line). Fortunately, that's something that can be related to the cluster assignments! We observe that only the ```green``` and ```red``` clusters contain large values of ```diabetes```, this means that the model was given a slight advantage when we include the clusters as features.
 
 #  Conclusion
 
