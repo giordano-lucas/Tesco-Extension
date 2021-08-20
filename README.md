@@ -1,3 +1,5 @@
+<img width="1330" alt="Screenshot 2021-08-20 at 20 42 53" src="https://user-images.githubusercontent.com/43466781/130279328-9f1af5c8-46d5-4e9d-a1d8-c6e778ba9c0c.png">
+
 Products clusters and interactive  visualization
 ======
 
